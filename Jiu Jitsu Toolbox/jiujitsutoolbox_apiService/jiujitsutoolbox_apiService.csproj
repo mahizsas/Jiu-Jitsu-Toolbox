@@ -195,6 +195,14 @@
     <Compile Include="Migrations\201405292015076_init.Designer.cs">
       <DependentUpon>201405292015076_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201406061451503_schools and events.cs" />
+    <Compile Include="Migrations\201406061451503_schools and events.Designer.cs">
+      <DependentUpon>201406061451503_schools and events.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201406061528252_school rewviews.cs" />
+    <Compile Include="Migrations\201406061528252_school rewviews.Designer.cs">
+      <DependentUpon>201406061528252_school rewviews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\jiujitsutoolbox_apiContext.cs" />
     <Compile Include="ScheduledJobs\SampleJob.cs" />
@@ -223,6 +231,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201405292015076_init.resx">
       <DependentUpon>201405292015076_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406061451503_schools and events.resx">
+      <DependentUpon>201406061451503_schools and events.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201406061528252_school rewviews.resx">
+      <DependentUpon>201406061528252_school rewviews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

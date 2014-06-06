@@ -30,6 +30,10 @@ namespace jiujitsutoolbox_apiService.Models
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Training> Trainings { get; set; }
         public DbSet<School> Schools { get; set; }
+        public DbSet<Location> Locations { get; set; }
+        public DbSet<Event> Events { get; set; }
+
+        public DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -63,9 +67,36 @@ namespace jiujitsutoolbox_apiService.Models
                .Property(m => m.Id)
                .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
 
+            modelBuilder.Entity<Event>()
+               .Property(m => m.Id)
+               .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            modelBuilder.Entity<Location>()
+               .Property(m => m.Id)
+               .HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+
+            // map Profile to Training and back
             modelBuilder.Entity<Training>().HasRequired(t => t.Profile)
                 .WithMany(p => p.Training)
                 .HasForeignKey(t => t.ProfileId);
+
+            // map Event to Location and back
+            modelBuilder.Entity<Event>().HasRequired(e => e.Location)
+                .WithMany(l => l.Events)
+                .HasForeignKey(e => e.LocationId);
+
+            // map School to Location
+            modelBuilder.Entity<School>().HasRequired(s => s.Location)
+                .WithMany()
+                .HasForeignKey(s => s.LocationId);
+
+            // map Reviews to School and back
+            modelBuilder.Entity<Review>().HasRequired(r => r.School)
+                .WithMany(s => s.Reviews)
+                .HasForeignKey(r => r.SchoolId);
+                
+
+
           
         }
 

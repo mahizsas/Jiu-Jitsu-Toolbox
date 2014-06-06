@@ -53,7 +53,7 @@ namespace jiujitsutoolbox_apiService.DataObjects
     public class Training : EntityData
     {
         public string ProfileId { get; set; }
-        public Profile Profile { get; set; }
+        public virtual Profile Profile { get; set; }
 
         public string SessionType { get; set; }
         public DateTime Date { get; set; }
@@ -70,6 +70,26 @@ namespace jiujitsutoolbox_apiService.DataObjects
     public class School : EntityData
     {
         public string Instructor { get; set; }
+
+        public virtual Location Location { get; set; }
+
+        public string LocationId { get; set; }
+
+        public virtual ICollection<Review> Reviews { get; set; }
+    }
+
+    public class Event : EntityData
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+
+        public virtual Location Location { get; set; }
+
+        public string LocationId { get; set; }
+    }
+
+    public class Location : EntityData
+    {
         public string Address { get; set; }
         public string Address2 { get; set; }
         public string City { get; set; }
@@ -77,5 +97,22 @@ namespace jiujitsutoolbox_apiService.DataObjects
         public string PostalCode { get; set; }
         public string Province { get; set; }
         public string Country { get; set; }
+
+        public string Phone { get; set; }
+
+        public virtual ICollection<Event> Events { get; set; }
+
+        public virtual School School { get; set; }
+    }
+
+    public class Review : EntityData
+    {
+        public int Rating { get; set; }
+        public string Notes { get; set; }
+        public string RatedBy { get; set; }
+
+        public string SchoolId { get; set; }
+
+        public virtual School School { get; set; }
     }
 }
